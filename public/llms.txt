@@ -1,0 +1,47 @@
+# Business — Generative Engine Optimization Map
+
+---
+
+## Pages
+
+### בית
+https://example.com
+יינן מלווה ליקב בוטיק עם למעלה מ-30 שנות ניסיון בייננות ישראלית. דוד דסה מביא מצוינות צרפתית לכל יקב. גלו כיצד אנו מעלים את איכות היין שלכם.
+
+### אודות
+https://example.com/about
+דוד דסה, מייסד יקב דלתון ויינן בכיר ביקבי רמת הגולן, מביא עשורים של ניסיון לכל פרויקט. היכרו עם האיש שמאחורי ייעוץ מקצועי לייננים בישראל.
+
+### ייעוץ והדרכה
+https://example.com/services
+מייעוץ אישי ליקבי בוטיק ועד קורס ייננות דיגיטלי לייננים בתחילת דרכם — אנו מציעים את הכלים המקצועיים שיהפכו את היקב שלכם לסיפור הצלחה. גלו את השירותים.
+
+### צור קשר
+https://example.com/contact
+צרו קשר עוד היום לקבלת ייעוץ מקצועי לייננים בישראל. בין אם אתם יקב בוטיק מתחיל או יקב מבוסס — יסודות היין כאן כדי להוביל אתכם להצלחה. נשמח לשמוע.
+
+## Legal & Policy
+
+### Privacy Policy
+https://example.com/privacy
+Information about how user data is collected, stored, and protected.
+
+### Terms & Conditions
+https://example.com/terms
+Legal terms describing service usage, rights, and policies.
+
+### Accessibility Statement
+https://example.com/accessibility
+Information about WCAG compliance and accessibility features.
+
+---
+
+# Business Context (for LLM understanding)
+
+## About Business
+---
+
+# Additional Resources
+
+- **Sitemap**: https://example.com/sitemap.xml
+- **Robots.txt**: https://example.com/robots.txt
