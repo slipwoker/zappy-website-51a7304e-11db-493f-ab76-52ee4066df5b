@@ -500,50 +500,442 @@
   }
 }
 </style>
-    <link rel="stylesheet" href="/styles.css">
 
-    <style id="zappy-dropdown-submenu-styles">
-      /* ========== DESKTOP DROPDOWN SUBMENU STYLES ========== */
-      /* Base styles for dropdown submenus - parent must be positioned */
-      .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { position: relative; }
-      /* Submenu base - hidden by default */
-      .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { display: block !important; position: absolute !important; top: 100%; left: 0; min-width: 220px; background: white; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000; list-style: none; pointer-events: none; }
-      /* CRITICAL: Desktop hover styles to show dropdown */
-      .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
-      /* Submenu item styling */
-      .sub-menu li { list-style: none; margin: 0; padding: 0; }
-      .sub-menu a { display: block !important; padding: 10px 16px !important; color: var(--text-dark, #333) !important; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background-color 0.2s; }
-      .sub-menu a:hover { background-color: #f5f5f5; }
-      /* RTL (Hebrew/Arabic) dropdown positioning */
-      [dir="rtl"] .nav-menu .sub-menu, [dir="rtl"] nav .sub-menu, [dir="rtl"] .navbar .sub-menu, html[lang="he"] .nav-menu .sub-menu, html[lang="he"] nav .sub-menu, html[lang="he"] .navbar .sub-menu, html[lang="ar"] .nav-menu .sub-menu, html[lang="ar"] nav .sub-menu, html[lang="ar"] .navbar .sub-menu { left: auto !important; right: 0 !important; }
-      /* Hide empty dropdown menus */
-      .sub-menu:empty, .sub-menu:not(:has(li:not(.zappy-hidden-menu-item))), .sub-menu:not(:has(li)) { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
-      /* Desktop: show submenu on Menu Group hover */
-      li:has(.menu-group-title):hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
-      /* Menu Group title styling */
-      .nav-menu > li > .menu-group-title, #navMenu > li > .menu-group-title { display: inline-block; padding: 0.5rem 1rem; cursor: default; user-select: none; }
-      
-      /* ========== MOBILE SUBMENU STYLES ========== */
-      @media (max-width: 768px) {
-        .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { position: static !important; transform: none !important; box-shadow: none !important; background: transparent !important; max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; padding: 0 !important; border-radius: 0 !important; }
-        .sub-menu.mobile-expanded { max-height: 500px !important; opacity: 1 !important; visibility: visible !important; padding: 8px 0 8px 16px !important; }
-        [dir="rtl"] .sub-menu.mobile-expanded, html[lang="he"] .sub-menu.mobile-expanded { padding: 8px 16px 8px 0 !important; }
-        /* Disable hover behavior on mobile */
-        .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 0; visibility: hidden; pointer-events: none; }
-        .nav-menu li > .sub-menu.mobile-expanded, nav li > .sub-menu.mobile-expanded, .navbar li > .sub-menu.mobile-expanded, #navMenu li > .sub-menu.mobile-expanded { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; }
-        .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; position: relative !important; min-height: 44px !important; }
-        .nav-menu li:has(.sub-menu) > a, nav li:has(.sub-menu) > a, .navbar li:has(.sub-menu) > a, #navMenu li:has(.sub-menu) > a { flex: 1 !important; min-width: 0 !important; }
-        .nav-menu li:has(.sub-menu) > .menu-group-title, nav li:has(.sub-menu) > .menu-group-title, .navbar li:has(.sub-menu) > .menu-group-title, #navMenu li:has(.sub-menu) > .menu-group-title { flex: 1 !important; min-width: 0 !important; padding: 0 !important; line-height: inherit !important; }
-        .nav-menu li:has(.sub-menu) > .sub-menu, nav li:has(.sub-menu) > .sub-menu, .navbar li:has(.sub-menu) > .sub-menu, #navMenu li:has(.sub-menu) > .sub-menu { flex-basis: 100% !important; width: 100% !important; }
-        .nav-menu li:has(.sub-menu) > a [class*="chevron"], .nav-menu li:has(.sub-menu) > a [class*="arrow"], .nav-menu li:has(.sub-menu) > a .fa-chevron-down, .nav-menu li:has(.sub-menu) > a .fa-angle-down, nav li:has(.sub-menu) > a [class*="chevron"], nav li:has(.sub-menu) > a [class*="arrow"], #navMenu li:has(.sub-menu) > a [class*="chevron"], #navMenu li:has(.sub-menu) > a [class*="arrow"] { display: none !important; visibility: hidden !important; }
-        .mobile-submenu-toggle { display: flex !important; align-items: center !important; justify-content: center !important; width: 44px !important; height: auto !important; background: transparent !important; border: none !important; cursor: pointer !important; color: var(--text-dark) !important; position: static !important; flex-shrink: 0 !important; align-self: stretch !important; z-index: 2 !important; padding: 0 !important; margin: 0 !important; }
-        .mobile-submenu-toggle::after { content: '' !important; width: 0 !important; height: 0 !important; border-left: 6px solid transparent !important; border-right: 6px solid transparent !important; border-top: 7px solid currentColor !important; transition: transform 0.3s ease !important; }
-        .mobile-submenu-toggle.expanded::after { transform: rotate(180deg) !important; }
-        .sub-menu a { padding: 10px 0 !important; display: block !important; color: var(--text-dark) !important; }
-        .navbar .sub-menu li a, nav.navbar .sub-menu li a, .zappy-products-dropdown .sub-menu a { color: var(--text-dark) !important; }
-      }
-      @media (min-width: 769px) { .mobile-submenu-toggle { display: none !important; } }
-    </style>
+          <style id="zappy-cta-mobile-style">
+            /* Hide CTA list item on desktop (tablets and up) */
+            @media (min-width: 769px) {
+              .nav-cta-item-mobile {
+                display: none !important;
+              }
+            }
+            /* Show CTA list item on mobile */
+            @media (max-width: 768px) {
+              .nav-cta-item-mobile {
+                display: list-item !important;
+              }
+            }
+          </style>
+        
+          <style id="zappy-nested-menu-style">
+            /* Desktop only: vertically center nav items */
+            @media (min-width: 769px) {
+              .nav-menu,
+              #navMenu {
+                align-items: center !important;
+              }
+            }
+            
+            /* Menu Group styling (non-clickable parent) - TOP LEVEL ONLY with ultra-specific selector */
+            .nav-menu > li > .menu-group-title,
+            #navMenu > li > .menu-group-title {
+              display: inline-block !important;
+              padding: 0.5rem 1rem !important;
+              color: var(--nav-color) !important;
+              font-weight: 500 !important;
+              line-height: 1.7 !important;
+              cursor: default !important;
+              user-select: none !important;
+              vertical-align: middle !important;
+              text-decoration: none !important;
+              margin: 0 !important;
+              transition: color 0.3s ease !important;
+            }
+            
+            .nav-menu > li > .menu-group-title:hover,
+            #navMenu > li > .menu-group-title:hover {
+              color: var(--nav-hover-color) !important;
+            }
+            
+            /* Desktop: show submenu on Menu Group hover */
+            li:has(.menu-group-title):hover > .sub-menu {
+              opacity: 1 !important;
+              visibility: visible !important;
+              transform: translateY(0) !important;
+              pointer-events: auto !important; /* Enable interaction when hovering */
+            }
+            
+            /* Hide menu items marked as hidden (overrides hover states) */
+            .zappy-hidden-menu-item,
+            li:has(.menu-group-title):hover > .sub-menu .zappy-hidden-menu-item {
+              display: none !important;
+              opacity: 0 !important;
+              visibility: hidden !important;
+              pointer-events: none !important;
+            }
+            
+            /* Keep submenu visible when hovering over the submenu itself */
+            .sub-menu:hover {
+              opacity: 1 !important;
+              visibility: visible !important;
+              pointer-events: auto !important;
+            }
+            
+            /* Nested dropdown menu styles - using more specific selectors */
+            .nav-menu .sub-menu,
+            nav .sub-menu,
+            .navbar .sub-menu {
+              display: block !important; /* Ensure submenu is in the DOM */
+              position: absolute !important;
+              top: 100%;
+              left: 0;
+              right: auto;
+              min-width: 200px;
+              background: white;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+              border-radius: 8px;
+              padding: 8px 0;
+              margin-top: 0px; /* Remove gap to prevent hover loss */
+              opacity: 0 !important;
+              visibility: hidden !important;
+              transform: translateY(-10px);
+              transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+              z-index: 1000;
+              list-style: none;
+              pointer-events: none; /* Prevent interaction when hidden */
+            }
+            
+            /* RTL (Hebrew/Arabic) submenu positioning - align to right instead of left */
+            [dir="rtl"] .nav-menu .sub-menu,
+            [dir="rtl"] nav .sub-menu,
+            [dir="rtl"] .navbar .sub-menu,
+            html[lang="he"] .nav-menu .sub-menu,
+            html[lang="he"] nav .sub-menu,
+            html[lang="he"] .navbar .sub-menu,
+            html[lang="ar"] .nav-menu .sub-menu,
+            html[lang="ar"] nav .sub-menu,
+            html[lang="ar"] .navbar .sub-menu {
+              left: auto;
+              right: 0;
+            }
+            
+            /* Show submenu on parent hover - more specific selectors */
+            .nav-menu li:hover > .sub-menu,
+            nav li:hover > .sub-menu,
+            .navbar li:hover > .sub-menu {
+              opacity: 1 !important;
+              visibility: visible !important;
+              transform: translateY(0) !important;
+              pointer-events: auto !important; /* Enable interaction when visible */
+            }
+            
+            /* Parent item must be relatively positioned */
+            .nav-menu li:has(.sub-menu),
+            nav li:has(.sub-menu),
+            .navbar li:has(.sub-menu) {
+              position: relative;
+            }
+            
+            /* Style for submenu items */
+            .sub-menu li {
+              list-style: none;
+              margin: 0;
+              padding: 0;
+            }
+            
+            .sub-menu a,
+            .sub-menu .menu-group-title {
+              display: block !important;
+              padding: 10px 12px !important;
+              color: #333 !important;
+              font-weight: 600 !important;
+              text-decoration: none;
+              transition: background-color 0.2s;
+              white-space: nowrap;
+              cursor: default;
+            }
+            
+            .sub-menu a:hover {
+              background-color: #f5f5f5;
+            }
+            
+            /* CRITICAL: Override submenu styles for TOP-LEVEL Menu Groups only - must come AFTER submenu styles */
+            .nav-menu > li > .menu-group-title,
+            #navMenu > li > .menu-group-title {
+              display: inline-block !important;
+              padding: 0.5rem 1rem !important;
+              color: var(--nav-color) !important;
+              font-weight: 500 !important;
+              line-height: 1.7 !important;
+              cursor: default !important;
+              user-select: none !important;
+              vertical-align: middle !important;
+              text-decoration: none !important;
+              margin: 0 !important;
+              transition: color 0.3s ease !important;
+            }
+            
+            .nav-menu > li > .menu-group-title:hover,
+            #navMenu > li > .menu-group-title:hover {
+              color: var(--nav-hover-color) !important;
+              background-color: transparent !important;
+            }
+            
+            /* On mobile, show nested menus as expandable accordion */
+            @media (max-width: 768px) {
+              /* Mobile submenu styling */
+              .nav-menu .sub-menu,
+              nav .sub-menu,
+              .navbar .sub-menu {
+                position: static !important;
+                transform: none !important;
+                box-shadow: none !important;
+                background: transparent !important;
+                margin-top: 0 !important;
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                visibility: hidden;
+                transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease, padding 0.3s ease;
+                padding: 0 !important;
+                border-radius: 0 !important;
+              }
+              
+              /* Expanded state */
+              .sub-menu.mobile-expanded {
+                max-height: 500px !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                padding: 8px 0 8px 16px !important;
+              }
+              
+              /* RTL padding adjustment */
+              [dir="rtl"] .sub-menu.mobile-expanded,
+              html[lang="he"] .sub-menu.mobile-expanded,
+              html[lang="ar"] .sub-menu.mobile-expanded {
+                padding: 8px 16px 8px 0 !important;
+              }
+              
+              /* Disable hover behavior on mobile */
+              .nav-menu li:hover > .sub-menu,
+              nav li:hover > .sub-menu,
+              .navbar li:hover > .sub-menu {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+              }
+              
+              /* Enable visibility for expanded submenus */
+              .nav-menu li > .sub-menu.mobile-expanded,
+              nav li > .sub-menu.mobile-expanded,
+              .navbar li > .sub-menu.mobile-expanded {
+                opacity: 1 !important;
+                visibility: visible !important;
+                pointer-events: auto !important;
+              }
+              
+              .sub-menu a {
+                padding: 10px 0 !important;
+                display: block !important;
+                font-size: 14px !important;
+              }
+              
+              .sub-menu a:hover {
+                background-color: transparent !important;
+              }
+              
+              /* Parent item wrapper - flex layout with relative positioning for absolute toggle */
+              .nav-menu li:has(.sub-menu),
+              nav li:has(.sub-menu),
+              .navbar li:has(.sub-menu) {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                align-items: center !important;
+                position: relative !important;
+                min-height: 44px !important;
+              }
+              
+              /* Parent link - takes full width since toggle is absolute (not a flex child) */
+              .nav-menu li:has(.sub-menu) > a,
+              nav li:has(.sub-menu) > a,
+              .navbar li:has(.sub-menu) > a,
+              .nav-menu > li > .menu-group-title,
+              #navMenu > li > .menu-group-title {
+                flex: 1 !important;
+                min-width: 0 !important;
+              }
+              
+              /* Normalize menu-group-title in mobile nav to match link alignment */
+              .nav-menu > li > .menu-group-title,
+              #navMenu > li > .menu-group-title {
+                padding: 0 !important;
+                line-height: inherit !important;
+              }
+              
+              /* Submenu takes full width below parent */
+              .nav-menu li:has(.sub-menu) > .sub-menu,
+              nav li:has(.sub-menu) > .sub-menu,
+              .navbar li:has(.sub-menu) > .sub-menu {
+                flex-basis: 100% !important;
+                width: 100% !important;
+              }
+              
+              /* HIDE EXISTING CHEVRONS/ARROWS from cloned sites to prevent duplicates */
+              .nav-menu li:has(.sub-menu) > a .fa-chevron-down,
+              .nav-menu li:has(.sub-menu) > a .fa-angle-down,
+              .nav-menu li:has(.sub-menu) > a [class*="chevron"],
+              .nav-menu li:has(.sub-menu) > a [class*="arrow"],
+              nav li:has(.sub-menu) > a [class*="chevron"],
+              nav li:has(.sub-menu) > a [class*="arrow"],
+              #navMenu li:has(.sub-menu) > a [class*="chevron"],
+              #navMenu li:has(.sub-menu) > a [class*="arrow"] {
+                display: none !important;
+                visibility: hidden !important;
+              }
+              
+              /* Toggle arrow button - flex child that stretches to match nav-link height */
+              .mobile-submenu-toggle {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: 44px !important;
+                height: auto !important;
+                background: transparent !important;
+                border: none !important;
+                cursor: pointer !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                position: static !important;
+                flex-shrink: 0 !important;
+                align-self: stretch !important;
+                z-index: 2 !important;
+                -webkit-tap-highlight-color: transparent;
+              }
+              
+              .mobile-submenu-toggle::after {
+                content: '' !important;
+                display: block !important;
+                width: 0 !important;
+                height: 0 !important;
+                border-left: 6px solid transparent !important;
+                border-right: 6px solid transparent !important;
+                border-top: 7px solid currentColor !important;
+                transition: transform 0.3s ease !important;
+              }
+              
+              /* Rotate arrow when expanded */
+              .mobile-submenu-toggle.expanded::after {
+                transform: rotate(180deg) !important;
+              }
+            }
+            
+            /* Hide toggle button on desktop */
+            @media (min-width: 769px) {
+              .mobile-submenu-toggle {
+                display: none !important;
+              }
+            }
+          </style>
+          
+          <script id="zappy-mobile-menu-script">
+            // Mobile menu toggle for nested submenus (including Menu Groups)
+            // Uses separate toggle button - link navigates, arrow toggles submenu
+            (function() {
+              function initMobileMenuToggles() {
+                // Only run on mobile
+                if (window.innerWidth > 768) {
+                  // Remove any toggle buttons on desktop
+                  document.querySelectorAll('.mobile-submenu-toggle').forEach(btn => btn.remove());
+                  document.querySelectorAll('.sub-menu.mobile-expanded').forEach(menu => {
+                    menu.classList.remove('mobile-expanded');
+                  });
+                  console.log('[MOBILE MENU] Desktop mode - cleanup done');
+                  return;
+                }
+                
+                console.log('[MOBILE MENU] Initializing mobile menu toggles...');
+                
+                // Find all parent menu items (items with .sub-menu)
+                const menuItemsWithSubmenus = document.querySelectorAll(
+                  '.nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu)'
+                );
+                
+                console.log('[MOBILE MENU] Found', menuItemsWithSubmenus.length, 'items with submenus');
+                
+                menuItemsWithSubmenus.forEach(function(li) {
+                  // Skip if already has toggle button
+                  if (li.querySelector('.mobile-submenu-toggle')) {
+                    return;
+                  }
+                  
+                  const submenu = li.querySelector('.sub-menu');
+                  const parentLink = li.querySelector(':scope > a') || li.querySelector(':scope > .menu-group-title');
+                  
+                  if (!submenu || !parentLink) return;
+                  
+                  // Create toggle button
+                  const toggleBtn = document.createElement('button');
+                  toggleBtn.className = 'mobile-submenu-toggle';
+                  toggleBtn.setAttribute('aria-label', 'Toggle submenu');
+                  toggleBtn.setAttribute('type', 'button');
+
+                  // Insert toggle button after the link
+                  parentLink.insertAdjacentElement('afterend', toggleBtn);
+                  
+                  console.log('[MOBILE MENU] Created toggle button for:', parentLink.textContent?.trim());
+                  
+                  // Handle toggle button click - only toggles submenu
+                  toggleBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const isExpanded = submenu.classList.contains('mobile-expanded');
+                    
+                    // Close all other submenus first
+                    document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) {
+                      if (menu !== submenu) {
+                        menu.classList.remove('mobile-expanded');
+                        const otherToggle = menu.parentElement.querySelector('.mobile-submenu-toggle');
+                        if (otherToggle) otherToggle.classList.remove('expanded');
+                      }
+                    });
+                    
+                    // Toggle this submenu
+                    submenu.classList.toggle('mobile-expanded');
+                    toggleBtn.classList.toggle('expanded');
+                    
+                    console.log('[MOBILE MENU] Toggled submenu:', !isExpanded ? 'expanded' : 'collapsed');
+                  });
+                  
+                  // Parent link navigates normally - no preventDefault
+                });
+              }
+              
+              // Initialize on DOM load
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMobileMenuToggles);
+              } else {
+                initMobileMenuToggles();
+              }
+              
+              // Re-initialize on window resize (but use debounce to avoid too many calls)
+              let resizeTimer;
+              window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(initMobileMenuToggles, 250);
+              });
+              
+              // Also initialize when mobile menu becomes visible
+              // This handles cases where the mobile menu is hidden initially
+              const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                  if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    const target = mutation.target;
+                    if (target.classList.contains('active') || target.style.display !== 'none') {
+                      console.log('[MOBILE MENU] Mobile menu became visible, re-initializing...');
+                      setTimeout(initMobileMenuToggles, 100);
+                    }
+                  }
+                });
+              });
+              
+              // Observe mobile menu containers
+              const mobileMenus = document.querySelectorAll('.mobile-menu, .nav-menu, #navMenu');
+              mobileMenus.forEach(function(menu) {
+                observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
+              });
+            })();
+          </script>
+    <link rel="stylesheet" href="/styles.css">
 
     <style id="mobile-lang-menu-deployed-css">
     @media (max-width: 768px) {
@@ -583,17 +975,17 @@
 
   <nav class="navbar" dir="rtl">
   <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
-    <svg class="hamburger-icon" width="24" height="24" viewbox="0 0 24 24" fill="none">
-      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     </svg>
-    <svg class="close-icon" width="24" height="24" viewbox="0 0 24 24" fill="none" style="display: none;">
-      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     </svg>
   </button>
 
   <button class="phone-header-btn" data-phone="0777297071" aria-label="Call">
-    <svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
     </svg>
   </button>
 
@@ -602,7 +994,7 @@
       <a href="/" class="logo-link">
         <img src="/assets/sadafronia-logo-1773960237106-1cz0nt.webp?v=1773960238046-qkcz0d" alt="יסודות היין – SADAFRONIA" class="logo">
       </a>
-    </div><ul class="nav-menu" id="navMenu"><li><a href="/about">אודות</a></li><li><a href="/services">ייעוץ והדרכה</a></li></ul></div>
+    </div><ul class="nav-menu" id="navMenu"><li><a href="/about">אודות</a></li><li><a href="/services">ייעוץ והדרכה</a></li><li class="nav-cta-item-mobile"><a href="/contact">צור קשר</a></li></ul></div>
 
     
 
@@ -1069,11 +1461,11 @@
 
       <!-- Divider ornament -->
       <div class="index-hero-ornament" aria-hidden="true">
-        <svg data-no-icon-edit="true" aria-hidden="true" width="120" height="14" viewbox="0 0 120 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="7" x2="44" y2="7" stroke="rgba(184,139,61,0.55)" stroke-width="1"></line>
-          <circle cx="60" cy="7" r="4" stroke="rgba(184,139,61,0.75)" stroke-width="1.2" fill="none"></circle>
-          <circle cx="60" cy="7" r="1.5" fill="rgba(184,139,61,0.75)"></circle>
-          <line x1="76" y1="7" x2="120" y2="7" stroke="rgba(184,139,61,0.55)" stroke-width="1"></line>
+        <svg data-no-icon-edit="true" aria-hidden="true" width="120" height="14" viewBox="0 0 120 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="7" x2="44" y2="7" stroke="rgba(184,139,61,0.55)" stroke-width="1"/>
+          <circle cx="60" cy="7" r="4" stroke="rgba(184,139,61,0.75)" stroke-width="1.2" fill="none"/>
+          <circle cx="60" cy="7" r="1.5" fill="rgba(184,139,61,0.75)"/>
+          <line x1="76" y1="7" x2="120" y2="7" stroke="rgba(184,139,61,0.55)" stroke-width="1"/>
         </svg>
       </div>
 
@@ -1088,20 +1480,20 @@
 
   <!-- Bottom SVG Divider -->
   <div class="index-hero-divider-wrapper">
-    <svg data-no-icon-edit="true" aria-hidden="true" viewbox="0 0 1440 72" preserveaspectratio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,72 L0,38 Q120,28 240,36 T480,30 Q600,24 720,34 T960,28 Q1080,22 1200,32 T1440,26 L1440,72 Z" fill="#FAF5EE"></path>
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,72 L0,38 Q120,28 240,36 T480,30 Q600,24 720,34 T960,28 Q1080,22 1200,32 T1440,26 L1440,72 Z" fill="#FAF5EE"/>
     </svg>
   </div>
 </section>
 
 <section class="index-story-section" data-layout-spec="בית-story" dir="rtl">
   <div class="index-story-container zappy-preserve-css-grid" style="display: grid; grid-template-columns: 628px 420px;" id="zappy-auto-grid-1773925270621-ijxmkz" data-zappy-auto-grid="true" data-zappy-grid-align="center" data-original-item-width="628" data-original-gap="72px"><div class="index-story-content">
-      <p class=""><span class="index-story-tag">הסיפור שלנו</span>
-      </p><h2 class="index-story-heading" style="">שלושה עשורים של יין,<br><em>ניסיון שמדבר בשקט</em></h2>
+      <p class><span class="index-story-tag">הסיפור שלנו</span>
+      </p><h2 class="index-story-heading" style>שלושה עשורים של יין,<br><em>ניסיון שמדבר בשקט</em></h2>
 
       <div class="index-story-rule"></div>
 
-      <p class="index-story-lead" style="">
+      <p class="index-story-lead" style>
         דוד דאסה הוא ייננן בכיר עם למעלה מ-30 שנות ניסיון בלב תעשיית היין הישראלית. הייתי שותף בהקמה ובבנייה ביקב דלתון&nbsp;
 
  וייננן ראשי
@@ -1118,7 +1510,7 @@
       </p>
 
       <div class="index-story-signature">
-        <span class="index-story-sig-name" style="">דוד דאסה</span>
+        <span class="index-story-sig-name" style>דוד דאסה</span>
         <span class="index-story-sig-title">ייננן בכיר ומייסד SADAFRONIA</span>
       </div>
     </div><div class="index-story-image-col">
@@ -1132,8 +1524,8 @@
   <!-- Bottom Divider: asymmetric curve + brass rule -->
   <div class="index-story-divider-wrapper">
     <div class="index-story-brass-rule"></div>
-    <svg aria-hidden="true" viewbox="0 0 1440 72" preserveaspectratio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,72 L0,36 Q180,18 360,28 T720,22 Q960,16 1080,30 T1440,20 L1440,72 Z" fill="#F6F0E8"></path>
+    <svg aria-hidden="true" viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,72 L0,36 Q180,18 360,28 T720,22 Q960,16 1080,30 T1440,20 L1440,72 Z" fill="#F6F0E8"/>
     </svg>
   </div>
 </section>
@@ -1160,27 +1552,27 @@
     <!-- Three-Card Grid -->
     <div class="index-services-grid zappy-preserve-css-grid" style="display: grid; grid-template-columns: 484.172px 333.906px 333.906px;" id="zappy-auto-grid-1773928404749-jnrcot" data-zappy-auto-grid="true" data-zappy-grid-align="start" data-original-item-width="484" data-original-gap="24px"><article class="index-services-card index-services-card--featured">
         <div class="index-services-card-icon">
-          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M24 4 C14 4 8 12 8 20 C8 30 16 36 24 44 C32 36 40 30 40 20 C40 12 34 4 24 4Z"></path>
-            <circle cx="24" cy="20" r="5"></circle>
-            <line x1="24" y1="25" x2="24" y2="34"></line>
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M24 4 C14 4 8 12 8 20 C8 30 16 36 24 44 C32 36 40 30 40 20 C40 12 34 4 24 4Z"/>
+            <circle cx="24" cy="20" r="5"/>
+            <line x1="24" y1="25" x2="24" y2="34"/>
           </svg>
         </div>
         <div class="index-services-card-content">
           <span class="index-services-card-tag">יקבי בוטיק</span>
           <h3 class="index-services-card-title">ייעוץ אסטרטגי ליקב בוטיק</h3>
           <p class="index-services-card-text">ליווי מקיף לייננים ובעלי יקבים בתחילת דרכם – מהחלטות בציר ועיתוי קטיף, דרך תכנון תסיסה ומשמעת מרתף, ועד לשיפוט מיזוג ועקביות סגנונית. אנו בונים יחד את האופי הייחודי של היין שלכם, עם ידע מקצועי שמתאים לקנה המידה ולחזון שלכם.</p>
-          <ul class="index-services-card-list" style=""><li class=""><i class="fa fa-check" aria-hidden="true"></i> החלטות בציר ואסטרטגיית קטיף</li><li class=""><i class="fa fa-check" aria-hidden="true"></i> דיסציפלינת מרתף ותסיסה</li><li class=""><i class="fa fa-check" aria-hidden="true"></i> שיפוט מיזוג ועקביות סגנונית</li></ul>
+          <ul class="index-services-card-list" style><li class><i class="fa fa-check" aria-hidden="true"></i> החלטות בציר ואסטרטגיית קטיף</li><li class><i class="fa fa-check" aria-hidden="true"></i> דיסציפלינת מרתף ותסיסה</li><li class><i class="fa fa-check" aria-hidden="true"></i> שיפוט מיזוג ועקביות סגנונית</li></ul>
           <a href="#contact" class="index-services-cta btn-primary" data-element-type="button" data-element-id="btn-1773928404734-hvxfesn36" data-native-element="true">לפרטים נוספים</a>
         </div>
       </article><article class="index-services-card">
         <div class="index-services-card-icon">
-          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="6" y="18" width="36" height="26" rx="2"></rect>
-            <path d="M6 18 L24 6 L42 18"></path>
-            <line x1="18" y1="44" x2="18" y2="30"></line>
-            <line x1="30" y1="44" x2="30" y2="30"></line>
-            <line x1="18" y1="30" x2="30" y2="30"></line>
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="6" y="18" width="36" height="26" rx="2"/>
+            <path d="M6 18 L24 6 L42 18"/>
+            <line x1="18" y1="44" x2="18" y2="30"/>
+            <line x1="30" y1="44" x2="30" y2="30"/>
+            <line x1="18" y1="30" x2="30" y2="30"/>
           </svg>
         </div>
         <div class="index-services-card-content">
@@ -1188,21 +1580,21 @@
           <h3 class="index-services-card-title">שיפור דיסקרטי ליקבים מבוססים</h3>
           <p class="index-services-card-text">ייעוץ יקב מתמשך ומדוד עבור יקבים שמחפשים לשפר את האיכות מבפנים – מבלי לשנות את הזהות. אנו עובדים בצל, מזהים צווארי בקבוק בתהליכי הייצור, ומציעים שיפורים מדויקים שמחדדים את ביטוי הטרואר ומרוממים את הרמה הכוללת.</p>
           <ul class="index-services-card-list">
-            <li class=""><i class="fa fa-check" aria-hidden="true"></i> אבחון תהליכי ייצור קיימים</li>
-            <li class=""><i class="fa fa-check" aria-hidden="true"></i> שיפור ביטוי הטרואר</li>
-            <li class=""><i class="fa fa-check" aria-hidden="true"></i> שמירה על זהות ואופי היקב</li>
+            <li class><i class="fa fa-check" aria-hidden="true"></i> אבחון תהליכי ייצור קיימים</li>
+            <li class><i class="fa fa-check" aria-hidden="true"></i> שיפור ביטוי הטרואר</li>
+            <li class><i class="fa fa-check" aria-hidden="true"></i> שמירה על זהות ואופי היקב</li>
           </ul>
         </div>
       </article><article class="index-services-card">
         <div class="index-services-card-icon">
-          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="6" y="8" width="36" height="26" rx="2"></rect>
-            <line x1="14" y1="42" x2="34" y2="42"></line>
-            <line x1="24" y1="34" x2="24" y2="42"></line>
-            <line x1="14" y1="18" x2="22" y2="18"></line>
-            <line x1="14" y1="24" x2="28" y2="24"></line>
-            <circle cx="32" cy="18" r="4"></circle>
-            <line x1="35" y1="21" x2="38" y2="24"></line>
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="6" y="8" width="36" height="26" rx="2"/>
+            <line x1="14" y1="42" x2="34" y2="42"/>
+            <line x1="24" y1="34" x2="24" y2="42"/>
+            <line x1="14" y1="18" x2="22" y2="18"/>
+            <line x1="14" y1="24" x2="28" y2="24"/>
+            <circle cx="32" cy="18" r="4"/>
+            <line x1="35" y1="21" x2="38" y2="24"/>
           </svg>
         </div>
         <div class="index-services-card-content">
@@ -1210,9 +1602,9 @@
           <h3 class="index-services-card-title">קורס ייננות דיגיטלי והכשרה מקצועית</h3>
           <p class="index-services-card-text">תכנית הכשרה מקיפה לייננים מתחילים ולאנשי תעשייה – קורס ייננות דיגיטלי הנגיש את הידע שנצבר לאורך עשרות שנים בצורה ברורה ומעשית. מהבסיס האמפלוגי ועד לקבלת החלטות בבית הבד, תלמדו לחשוב ולעבוד כייננים אמיתיים.</p>
           <ul class="index-services-card-list">
-            <li class=""><i class="fa fa-check" aria-hidden="true"></i> מודולים דיגיטליים נגישים</li>
-            <li class=""><i class="fa fa-check" aria-hidden="true"></i> העברת ידע ממומחה בכיר</li>
-            <li class=""><i class="fa fa-check" aria-hidden="true"></i> כלים מעשיים לעבודת שטח</li>
+            <li class><i class="fa fa-check" aria-hidden="true"></i> מודולים דיגיטליים נגישים</li>
+            <li class><i class="fa fa-check" aria-hidden="true"></i> העברת ידע ממומחה בכיר</li>
+            <li class><i class="fa fa-check" aria-hidden="true"></i> כלים מעשיים לעבודת שטח</li>
           </ul>
         </div>
       </article></div>
@@ -1220,14 +1612,14 @@
 
   <!-- Bottom Divider: Vineyard Contour Lines -->
   <div class="index-services-divider-wrapper" aria-hidden="true">
-    <svg aria-hidden="true" viewbox="0 0 1200 90" preserveaspectratio="none" xmlns="http://www.w3.org/2000/svg">
+    <svg aria-hidden="true" viewBox="0 0 1200 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <!-- Contour lines fading into dark -->
-      <path d="M0,90 L0,55 Q60,52 120,57 T240,53 Q300,56 360,51 T480,55 Q540,52 600,57 T720,53 Q780,56 840,51 T960,55 Q1020,52 1080,57 T1200,53 L1200,90 Z" fill="var(--bg-light)" opacity="1"></path>
-      <path d="M0,90 L0,65 Q80,61 160,67 T320,62 Q400,66 480,61 T640,65 Q720,61 800,67 T960,62 Q1040,66 1120,61 T1200,65 L1200,90 Z" fill="var(--bg-light)" opacity="0.85"></path>
+      <path d="M0,90 L0,55 Q60,52 120,57 T240,53 Q300,56 360,51 T480,55 Q540,52 600,57 T720,53 Q780,56 840,51 T960,55 Q1020,52 1080,57 T1200,53 L1200,90 Z" fill="var(--bg-light)" opacity="1"/>
+      <path d="M0,90 L0,65 Q80,61 160,67 T320,62 Q400,66 480,61 T640,65 Q720,61 800,67 T960,62 Q1040,66 1120,61 T1200,65 L1200,90 Z" fill="var(--bg-light)" opacity="0.85"/>
       <!-- Subtle contour lines mimicking vineyard rows -->
-      <path d="M0,48 Q100,44 200,49 T400,45 Q500,48 600,44 T800,48 Q900,44 1000,49 T1200,45" fill="var(--bg-light)" stroke="#5A4D45" stroke-width="0.8" opacity="0.5"></path>
-      <path d="M0,38 Q120,35 240,40 T480,36 Q600,39 720,35 T960,39 Q1080,35 1200,40" fill="var(--bg-light)" stroke="#5A4D45" stroke-width="0.6" opacity="0.35"></path>
-      <path d="M0,28 Q150,25 300,30 T600,26 Q750,29 900,25 T1200,29" fill="var(--bg-light)" stroke="#5A4D45" stroke-width="0.5" opacity="0.2"></path>
+      <path d="M0,48 Q100,44 200,49 T400,45 Q500,48 600,44 T800,48 Q900,44 1000,49 T1200,45" fill="var(--bg-light)" stroke="#5A4D45" stroke-width="0.8" opacity="0.5"/>
+      <path d="M0,38 Q120,35 240,40 T480,36 Q600,39 720,35 T960,39 Q1080,35 1200,40" fill="var(--bg-light)" stroke="#5A4D45" stroke-width="0.6" opacity="0.35"/>
+      <path d="M0,28 Q150,25 300,30 T600,26 Q750,29 900,25 T1200,29" fill="var(--bg-light)" stroke="#5A4D45" stroke-width="0.5" opacity="0.2"/>
     </svg>
   </div>
 
@@ -1902,12 +2294,12 @@
     <!-- Section Header -->
     <div class="index-testimonials-header">
       <p><span class="index-testimonials-eyebrow">קולות מהשטח</span>
-      </p><h2 class="index-testimonials-title" style="">מה אומרים עלינו</h2>
+      </p><h2 class="index-testimonials-title" style>מה אומרים עלינו</h2>
       <div class="index-testimonials-title-ornament">
-        <svg aria-hidden="true" width="120" height="10" viewbox="0 0 120 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="5" x2="48" y2="5" stroke="var(--border-dark)" stroke-width="1"></line>
-          <circle cx="60" cy="5" r="3.5" fill="var(--accent)" opacity="0.7"></circle>
-          <line x1="72" y1="5" x2="120" y2="5" stroke="var(--border-dark)" stroke-width="1"></line>
+        <svg aria-hidden="true" width="120" height="10" viewBox="0 0 120 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="5" x2="48" y2="5" stroke="var(--border-dark)" stroke-width="1"/>
+          <circle cx="60" cy="5" r="3.5" fill="var(--accent)" opacity="0.7"/>
+          <line x1="72" y1="5" x2="120" y2="5" stroke="var(--border-dark)" stroke-width="1"/>
         </svg>
       </div>
     </div><div class="zappy-inserted-element" id="zappy-element-1773928220854-nn2k9aqpo" data-element-id="zappy-element-1773928220854-nn2k9aqpo" data-element-type="paragraph" style="width: 100%;"><p style="font-size: 1rem; max-width: none; margin-left: auto; margin-right: auto;" data-element-type="paragraph" data-element-id="zappy-element-1773928220854-nn2k9aqpo" id="zappy-element-1773928220854-nn2k9aqpo">הזן את טקס
@@ -1920,7 +2312,7 @@
     <article class="index-testimonials-card index-testimonials-card--low">
         <div class="index-testimonials-quote-mark">“</div>
         <blockquote class="index-testimonials-quote">
-          <p style="">קיבלנו ייעוץ מקצועי לייננים שלנו בשלב קריטי של הרחבת היקב. הידע שדוד הביא – שנים של עבודה עם יקבים מובילים בארץ ובחו"ל – הוציא אותנו מתוך ספקות ונתן לנו ביטחון לפעול. הדיסקרטיות, הדיוק, וההתמסרות לפרטים הקטנים – אלה הדברים שמייחדים אותו מכל יועץ אחר שפגשנו.</p>
+          <p style>קיבלנו ייעוץ מקצועי לייננים שלנו בשלב קריטי של הרחבת היקב. הידע שדוד הביא – שנים של עבודה עם יקבים מובילים בארץ ובחו"ל – הוציא אותנו מתוך ספקות ונתן לנו ביטחון לפעול. הדיסקרטיות, הדיוק, וההתמסרות לפרטים הקטנים – אלה הדברים שמייחדים אותו מכל יועץ אחר שפגשנו.</p>
         </blockquote>
         <footer class="site-footer" dir="rtl">
   <div class="footer-main">
@@ -2006,9 +2398,9 @@
 
       <div class="index-testimonials-proof-item">
         <div class="index-testimonials-proof-icon">
-          <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewbox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.5" opacity="0.4"></circle>
-            <path d="M14 7v7l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+            <path d="M14 7v7l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
         <h3 class="index-testimonials-proof-number">30+</h3>
@@ -2019,10 +2411,10 @@
 
       <div class="index-testimonials-proof-item">
         <div class="index-testimonials-proof-icon">
-          <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewbox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M5 22 Q14 8 23 22" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.4"></path>
-            <circle cx="14" cy="11" r="3" stroke="currentColor" stroke-width="1.5"></circle>
-            <path d="M8 22h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+          <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5 22 Q14 8 23 22" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.4"/>
+            <circle cx="14" cy="11" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 22h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </div>
         <h3 class="index-testimonials-proof-number">יקבי עילית</h3>
@@ -2033,9 +2425,9 @@
 
       <div class="index-testimonials-proof-item">
         <div class="index-testimonials-proof-icon">
-          <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewbox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="4" y="6" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.4"></rect>
-            <path d="M9 12h10M9 16h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+          <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="4" y="6" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+            <path d="M9 12h10M9 16h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </div>
         <h3 class="index-testimonials-proof-number">קורסים דיגיטליים</h3>
@@ -2048,8 +2440,8 @@
 
   <!-- Bottom Divider: soft diagonal linen-like transition to CTA -->
   <div class="index-testimonials-divider-wrapper">
-    <svg aria-hidden="true" viewbox="0 0 1440 90" preserveaspectratio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,90 L0,55 Q180,30 360,48 Q540,65 720,38 Q900,12 1080,42 Q1260,65 1440,30 L1440,90 Z" fill="#FAF5EE"></path>
+    <svg aria-hidden="true" viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,90 L0,55 Q180,30 360,48 Q540,65 720,38 Q900,12 1080,42 Q1260,65 1440,30 L1440,90 Z" fill="#FAF5EE"/>
     </svg>
   </div>
 
