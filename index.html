@@ -1233,474 +1233,643 @@
 
 </section>
 
-<section style="direction: rtl; font-family: system-ui, sans-serif; background: var(--bg-dark, #352D28); position: relative; width: 100%; max-width: 100%; box-sizing: border-box; overflow: hidden; padding: 0;" data-zappy-section="true" class="section" id="ai-section-1773963438635-9fywwlc">
+<section style="direction: rtl; font-family: system-ui, sans-serif; width: 100%; max-width: 100%; box-sizing: border-box; background: var(--bg-dark, #352D28); position: relative; overflow: hidden; padding: 0;" data-zappy-section="true" class="section" id="ai-section-1773963438635-9fywwlc">
 
 <style>
-  .award-section-wrap {
+  .award-section {
     position: relative;
     width: 100%;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-dark, #352D28);
     overflow: hidden;
   }
 
-  /* Dramatic background geometric shapes */
-  .award-bg-circle {
+  .award-bg-geo {
     position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .award-bg-geo::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -20%;
+    width: 80%;
+    height: 140%;
+    background: linear-gradient(135deg, #B56D40 0%, #7A4030 60%, transparent 100%);
+    transform: skewX(-12deg);
+    opacity: 0.35;
+  }
+
+  .award-bg-geo::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -15%;
+    width: 60%;
+    height: 80%;
+    background: radial-gradient(ellipse at center, #D7B27F22 0%, transparent 70%);
     border-radius: 50%;
-    pointer-events: none;
-  }
-  .award-bg-circle-1 {
-    width: 700px;
-    height: 700px;
-    top: -200px;
-    right: -200px;
-    background: radial-gradient(circle, rgba(180,120,60,0.18) 0%, transparent 70%);
-    animation: pulseGlow 6s ease-in-out infinite alternate;
-  }
-  .award-bg-circle-2 {
-    width: 500px;
-    height: 500px;
-    bottom: -150px;
-    left: -150px;
-    background: radial-gradient(circle, rgba(74,57,45,0.5) 0%, transparent 70%);
-    animation: pulseGlow 8s ease-in-out infinite alternate-reverse;
-  }
-  @keyframes pulseGlow {
-    from { transform: scale(1); opacity: 0.7; }
-    to { transform: scale(1.15); opacity: 1; }
   }
 
-  /* Decorative diagonal stripe */
-  .award-diagonal-stripe {
+  .award-noise {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: repeating-linear-gradient(
-      -55deg,
-      transparent,
-      transparent 60px,
-      rgba(184,139,61,0.03) 60px,
-      rgba(184,139,61,0.03) 61px
-    );
-    pointer-events: none;
+    inset: 0;
     z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
   }
 
-  .award-content-container {
+  .award-year-giant {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(180px, 28vw, 380px);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(183, 132, 90, 0.12);
+    letter-spacing: -0.05em;
+    line-height: 1;
+    z-index: 2;
+    user-select: none;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .award-lines-deco {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .award-line-h {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(183,132,90,0.3) 30%, rgba(183,132,90,0.5) 60%, transparent 100%);
+  }
+
+  .award-line-h:nth-child(1) { top: 15%; width: 100%; left: 0; }
+  .award-line-h:nth-child(2) { bottom: 18%; width: 100%; left: 0; opacity: 0.6; }
+
+  .award-line-v {
+    position: absolute;
+    width: 1px;
+    top: 0;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 0%, rgba(183,132,90,0.2) 30%, rgba(183,132,90,0.4) 60%, transparent 100%);
+  }
+
+  .award-line-v:nth-child(3) { right: 15%; }
+  .award-line-v:nth-child(4) { left: 15%; opacity: 0.5; }
+
+  .award-main-content {
     position: relative;
     z-index: 10;
     width: 100%;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 80px 40px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0;
-    align-items: stretch;
+    gap: 60px;
+    align-items: center;
   }
 
-  /* LEFT PANEL — the "certificate" card */
-  .award-certificate-panel {
+  .award-left-panel {
+    position: relative;
+  }
+
+  .award-badge-container {
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
+  }
+
+  .award-badge-outer {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    display: flex;
     align-items: center;
-    padding: 60px 40px;
-    background: linear-gradient(145deg, rgba(184,139,61,0.12) 0%, rgba(74,57,45,0.3) 100%);
-    border: 1px solid rgba(184,139,61,0.35);
-    border-radius: 4px 0 0 4px;
-    text-align: center;
-    gap: 20px;
-    overflow: hidden;
+    justify-content: center;
+    animation: rotateBadge 20s linear infinite;
   }
 
-  .award-certificate-panel::before {
-    content: '';
+  @keyframes rotateBadge {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .award-badge-ring {
     position: absolute;
-    inset: 8px;
-    border: 1px solid rgba(184,139,61,0.2);
-    border-radius: 2px;
-    pointer-events: none;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px solid;
+    border-color: transparent;
+    background: conic-gradient(from 0deg, #B88B3D, #E6D0B0, #B88B3D, #7A5846, #B88B3D) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
   }
 
-  .award-corner-ornament {
+  .award-badge-ring-2 {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    border-color: rgba(184,139,61,0.5);
-    border-style: solid;
+    inset: 12px;
+    border-radius: 50%;
+    border: 1px dashed rgba(183, 132, 90, 0.4);
   }
-  .award-corner-ornament.tl { top: 16px; right: 16px; border-width: 2px 0 0 2px; }
-  .award-corner-ornament.tr { top: 16px; left: 16px; border-width: 2px 2px 0 0; }
-  .award-corner-ornament.bl { bottom: 16px; right: 16px; border-width: 0 0 2px 2px; }
-  .award-corner-ornament.br { bottom: 16px; left: 16px; border-width: 0 2px 2px 0; }
 
-  .award-year-badge {
+  .award-badge-inner {
+    position: relative;
+    z-index: 5;
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #5A3D2A 0%, #2E1E14 60%, #1A1008 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    position: relative;
-    z-index: 2;
+    justify-content: center;
+    box-shadow: 0 0 60px rgba(183,132,90,0.25), inset 0 0 40px rgba(0,0,0,0.5);
+    animation: rotateBadge 20s linear infinite;
+    animation-direction: reverse;
   }
 
-  .award-year-number {
-    font-size: clamp(72px, 10vw, 110px);
+  .award-badge-icon {
+    font-size: 40px;
+    margin-bottom: 8px;
+    display: block;
+    filter: drop-shadow(0 0 12px rgba(214,178,111,0.7));
+    animation: iconPulse 3s ease-in-out infinite;
+  }
+
+  @keyframes iconPulse {
+    0%, 100% { filter: drop-shadow(0 0 12px rgba(214,178,111,0.7)); transform: scale(1); }
+    50% { filter: drop-shadow(0 0 24px rgba(214,178,111,1)); transform: scale(1.08); }
+  }
+
+  .award-badge-year-text {
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: rgba(214,178,111,0.7);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .award-badge-year-num {
+    font-size: 32px;
     font-weight: 900;
-    line-height: 1;
     background: var(--gradient-gold-shine, linear-gradient(90deg, #E6D0B0 0%, #C7A06B 50%, #F1E0C8 100%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: -4px;
-    animation: shimmer 3s linear infinite;
-    background-size: 200% 100%;
+    line-height: 1.1;
+    letter-spacing: 0.05em;
   }
 
-  @keyframes shimmer {
-    0% { background-position: 200% center; }
-    100% { background-position: -200% center; }
-  }
-
-  .award-year-label {
-    font-size: 13px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--accent, #B88B3D);
-    font-weight: 600;
-  }
-
-  .award-divider-ornament {
-    width: 80px;
-    height: 1px;
-    background: var(--gradient-gold-shine);
-    position: relative;
-    margin: 8px auto;
-  }
-  .award-divider-ornament::before,
-  .award-divider-ornament::after {
-    content: '◆';
+  .award-floating-tags {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 8px;
-    color: var(--accent, #B88B3D);
-  }
-  .award-divider-ornament::before { right: -16px; }
-  .award-divider-ornament::after { left: -16px; }
-
-  .award-cert-title {
-    font-size: clamp(15px, 2vw, 18px);
-    color: var(--text-light, #F8F2E8);
-    font-weight: 700;
-    line-height: 1.5;
-    position: relative;
-    z-index: 2;
-  }
-
-  .award-cert-subtitle {
-    font-size: 13px;
-    color: var(--accent, #B88B3D);
-    font-weight: 500;
-    letter-spacing: 2px;
-    position: relative;
-    z-index: 2;
-  }
-
-  /* Tags row */
-  .award-tags-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
-    margin-top: 8px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
   }
 
   .award-tag {
-    font-size: 10px;
-    padding: 4px 10px;
-    border: 1px solid rgba(184,139,61,0.4);
-    border-radius: 20px;
-    color: rgba(248,242,232,0.7);
-    letter-spacing: 1px;
+    position: absolute;
+    background: rgba(74, 57, 45, 0.85);
+    border: 1px solid rgba(183,132,90,0.3);
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 11px;
+    color: rgba(214,178,111,0.9);
+    letter-spacing: 0.15em;
     white-space: nowrap;
-    transition: all 0.3s ease;
-  }
-  .award-tag:hover {
-    background: rgba(184,139,61,0.15);
-    border-color: var(--accent, #B88B3D);
-    color: var(--text-light, #F8F2E8);
+    backdrop-filter: blur(8px);
+    font-weight: 600;
+    text-transform: uppercase;
   }
 
-  /* RIGHT PANEL — main content */
-  .award-content-panel {
-    background: linear-gradient(145deg, #4B3228 0%, #352D28 100%);
-    border: 1px solid rgba(90,77,69,0.5);
-    border-right: none;
-    border-radius: 0 4px 4px 0;
-    padding: 60px 48px;
+  .award-tag:nth-child(1) {
+    top: 5%;
+    right: -10px;
+    animation: floatTag1 4s ease-in-out infinite;
+  }
+
+  .award-tag:nth-child(2) {
+    bottom: 12%;
+    left: -20px;
+    animation: floatTag1 4s ease-in-out infinite 1.5s;
+  }
+
+  .award-tag:nth-child(3) {
+    top: 45%;
+    left: -30px;
+    animation: floatTag1 4s ease-in-out infinite 0.8s;
+  }
+
+  @keyframes floatTag1 {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .award-right-panel {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 28px;
+  }
+
+  .award-overline {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .award-overline-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(183,132,90,0.6) 0%, transparent 100%);
+  }
+
+  .award-overline-text {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    color: var(--accent, #B88B3D);
+    text-transform: uppercase;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .award-title-block {
     position: relative;
-    overflow: hidden;
   }
 
-  .award-content-panel::after {
-    content: '★';
+  .award-title-accent {
     position: absolute;
-    bottom: -20px;
-    left: -20px;
-    font-size: 180px;
-    color: rgba(184,139,61,0.04);
-    line-height: 1;
-    pointer-events: none;
-    font-weight: 900;
+    top: -5px;
+    right: -20px;
+    width: 4px;
+    height: calc(100% + 10px);
+    background: linear-gradient(180deg, #B88B3D 0%, #7A5846 100%);
+    border-radius: 2px;
   }
 
-  .award-icon-row {
+  .award-h2 {
+    font-size: clamp(26px, 3.5vw, 44px);
+    font-weight: 900;
+    color: var(--text-light, #F8F2E8);
+    line-height: 1.2;
+    margin: 0;
+    padding-right: 24px;
+  }
+
+  .award-h2 span {
+    display: block;
+    background: var(--gradient-gold-shine, linear-gradient(90deg, #E6D0B0 0%, #C7A06B 50%, #F1E0C8 100%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .award-divider-ornament {
     display: flex;
     align-items: center;
     gap: 12px;
   }
 
-  .award-icon-wrap {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(184,139,61,0.15);
-    border: 1px solid rgba(184,139,61,0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: all 0.4s ease;
-  }
-  .award-icon-wrap:hover {
-    background: rgba(184,139,61,0.3);
-    transform: rotate(15deg) scale(1.1);
-  }
-
-  .award-icon-label {
-    font-size: 11px;
-    color: var(--accent, #B88B3D);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-
-  .award-main-heading {
-    font-size: clamp(22px, 3vw, 34px);
-    font-weight: 900;
-    color: var(--text-light, #F8F2E8);
-    line-height: 1.3;
-    position: relative;
-    padding-right: 20px;
-  }
-  .award-main-heading::before {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 8px;
-    bottom: 8px;
-    width: 3px;
-    background: var(--gradient-gold-accent, linear-gradient(180deg, #D7B27F 0%, #B7845A 100%));
-    border-radius: 2px;
-  }
-
-  .award-body-text {
-    font-size: clamp(14px, 1.5vw, 16px);
-    color: rgba(248,242,232,0.75);
-    line-height: 1.9;
-    font-weight: 400;
-  }
-
-  .award-bottom-credits {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(90,77,69,0.5);
-    position: relative;
-    z-index: 2;
-  }
-
-  .award-credit-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .award-credit-dot {
+  .award-ornament-dot {
     width: 6px;
     height: 6px;
     border-radius: 50%;
     background: var(--accent, #B88B3D);
-    flex-shrink: 0;
-    animation: dotPulse 2s ease-in-out infinite;
-  }
-  .award-credit-item:nth-child(2) .award-credit-dot { animation-delay: 0.4s; }
-  .award-credit-item:nth-child(3) .award-credit-dot { animation-delay: 0.8s; }
-
-  @keyframes dotPulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.7); }
   }
 
-  .award-credit-text {
-    font-size: 13px;
-    color: rgba(248,242,232,0.6);
-    font-weight: 500;
+  .award-ornament-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(183,132,90,0.5) 0%, transparent 100%);
   }
 
-  .award-bottom-stamp {
-    display: flex;
-    align-items: center;
+  .award-ornament-star {
+    font-size: 18px;
+    color: var(--accent, #B88B3D);
+    line-height: 1;
+  }
+
+  .award-body-text {
+    font-size: clamp(14px, 1.6vw, 17px);
+    line-height: 1.85;
+    color: rgba(248,242,232,0.82);
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .award-sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     margin-top: 8px;
   }
 
-  .award-stamp-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to left, transparent, rgba(184,139,61,0.4));
+  .award-sponsor-chip {
+    background: rgba(74, 57, 45, 0.6);
+    border: 1px solid rgba(183,132,90,0.25);
+    border-radius: 6px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
   }
 
-  .award-stamp-text {
+  .award-sponsor-chip::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #B88B3D, transparent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .award-sponsor-chip:hover::before {
+    transform: scaleX(1);
+  }
+
+  .award-sponsor-chip:hover {
+    background: rgba(74, 57, 45, 0.9);
+    border-color: rgba(183,132,90,0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  .award-sponsor-chip .chip-icon {
+    font-size: 18px;
+  }
+
+  .award-sponsor-chip .chip-text {
+    font-size: 10px;
+    color: rgba(214,178,111,0.8);
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .award-bottom-band {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border-top: 1px solid rgba(183,132,90,0.2);
+    backdrop-filter: blur(10px);
+  }
+
+  .award-bottom-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .award-bottom-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(248,242,232,0.65);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  .award-bottom-item .bi-dot {
+    color: var(--accent, #B88B3D);
+    font-size: 20px;
+  }
+
+  .award-bottom-label {
+    color: rgba(214,178,111,0.9);
+    font-weight: 700;
     font-size: 11px;
-    color: rgba(184,139,61,0.7);
-    letter-spacing: 2px;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    white-space: nowrap;
   }
 
-  /* Responsive */
-  @media (max-width: 768px) {
-    .award-content-container {
+  .award-certificate-note {
+    text-align: center;
+    color: rgba(214,178,111,0.6);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    border-right: 2px solid rgba(183,132,90,0.4);
+    padding-right: 14px;
+  }
+
+  @media (max-width: 900px) {
+    .award-main-content {
       grid-template-columns: 1fr;
-      padding: 100px 20px 60px;
+      gap: 40px;
+      padding: 100px 24px 60px;
     }
-    .award-certificate-panel {
-      border-radius: 4px 4px 0 0;
-      padding: 40px 24px;
+
+    .award-badge-outer {
+      width: 220px;
+      height: 220px;
     }
-    .award-content-panel {
-      border-right: 1px solid rgba(90,77,69,0.5);
-      border-top: none;
-      border-radius: 0 0 4px 4px;
-      padding: 40px 24px;
+
+    .award-badge-inner {
+      width: 165px;
+      height: 165px;
     }
-    .award-corner-ornament.tr,
-    .award-corner-ornament.br { display: none; }
+
+    .award-badge-icon {
+      font-size: 30px;
+    }
+
+    .award-badge-year-num {
+      font-size: 24px;
+    }
+
+    .award-tag {
+      display: none;
+    }
+
+    .award-sponsors-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .award-bottom-inner {
+      padding: 16px 24px;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .award-title-accent {
+      display: none;
+    }
+
+    .award-h2 {
+      padding-right: 0;
+    }
+
+    .award-year-giant {
+      font-size: 45vw;
+    }
   }
 
   @media (max-width: 480px) {
-    .award-year-number { font-size: 72px; }
-    .award-tags-row { gap: 6px; }
-    .award-tag { font-size: 9px; padding: 3px 8px; }
+    .award-sponsors-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .award-bottom-item:last-child {
+      display: none;
+    }
+  }
+
+  @keyframes shimmerGold {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+
+  .award-shimmer {
+    background: linear-gradient(90deg, #E6D0B0 0%, #C7A06B 25%, #F1E0C8 50%, #C7A06B 75%, #E6D0B0 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmerGold 4s linear infinite;
   }
 </style>
 
-<div class="award-section-wrap">
-  <!-- BG decorations -->
-  <div class="award-bg-circle award-bg-circle-1"></div>
-  <div class="award-bg-circle award-bg-circle-2"></div>
-  <div class="award-diagonal-stripe"></div>
+<div class="award-section">
+  <!-- Background geometry -->
+  <div class="award-bg-geo"></div>
+  <div class="award-noise"></div>
 
-  <div class="award-content-container">
+  <!-- Giant year watermark -->
+  <div class="award-year-giant" aria-hidden="true">1989</div>
 
-    <!-- LEFT: Certificate Visual Panel -->
-    <div class="award-certificate-panel">
-      <div class="award-corner-ornament tl"></div>
-      <div class="award-corner-ornament tr"></div>
-      <div class="award-corner-ornament bl"></div>
-      <div class="award-corner-ornament br"></div>
+  <!-- Decorative grid lines -->
+  <div class="award-lines-deco" aria-hidden="true">
+    <div class="award-line-h"></div>
+    <div class="award-line-h"></div>
+    <div class="award-line-v"></div>
+    <div class="award-line-v"></div>
+  </div>
 
-      <div class="award-year-badge">
-        <div class="award-year-number">1989</div>
-        <div class="award-year-label">שנת הזכייה</div>
-      </div>
+  <!-- Main content grid -->
+  <div class="award-main-content">
 
-      <div class="award-divider-ornament"></div>
+    <!-- LEFT: Animated badge -->
+    <div class="award-left-panel">
+      <div class="award-badge-container">
+        <div class="award-badge-outer" aria-hidden="true">
+          <div class="award-badge-ring"></div>
+          <div class="award-badge-ring-2"></div>
+          <div class="award-badge-inner">
+            <!-- Icon 1: trophy/star -->
+            <span class="award-badge-icon" role="img" aria-label="פרס">🏆</span>
+            <span class="award-badge-year-text">שנת הזכייה</span>
+            <span class="award-badge-year-num">1989</span>
+          </div>
+        </div>
 
-      <div class="award-cert-title">הישג יוקרתי</div>
-      <div class="award-cert-subtitle">תעודה מקורית</div>
-
-      <div class="award-divider-ornament"></div>
-
-      <div style="font-size:11px; color: rgba(248,242,232,0.5); letter-spacing:1px; line-height:1.7; position:relative;z-index:2;">
-        הוענקה ע״י קבוצת ידיעות אחרונות<br>
-        הוקרה לאומית
-      </div>
-
-      <div class="award-tags-row">
-        <span class="award-tag">שר התחבורה</span>
-        <span class="award-tag">נציבות שירות המדינה</span>
-        <span class="award-tag">התאחדות התעשיינים</span>
+        <!-- Floating tags -->
+        <div class="award-floating-tags" aria-hidden="true">
+          <span class="award-tag">הישג יוקרתי</span>
+          <span class="award-tag">תעודה מקורית</span>
+          <span class="award-tag">הוקרה לאומית</span>
+        </div>
       </div>
     </div>
 
-    <!-- RIGHT: Main Content Panel -->
-    <div class="award-content-panel">
+    <!-- RIGHT: Text content -->
+    <div class="award-right-panel">
 
-      <div class="award-icon-row">
-        <div class="award-icon-wrap">
-          <!-- Icon 1: Medal/Award -->
-          <svg width="22" height="22" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: var(--accent);">
-            <circle cx="12" cy="14" r="6" stroke="#B88B3D" stroke-width="1.8"></circle>
-            <path d="M9 14l2 2 4-4" stroke="#B88B3D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M9 3l1.5 3h3L15 3" stroke="#B88B3D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M9 3L7 8M15 3l2 5" stroke="#B88B3D" stroke-width="1.5" stroke-linecap="round"></path>
-          </svg>
-        </div>
-        <div class="award-icon-wrap">
-          <!-- Icon 2: Star -->
-          <svg width="22" height="22" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2l2.9 6.26L22 9.27l-5 5.14 1.18 7.59L12 18.77l-6.18 3.23L7 14.41 2 9.27l7.1-1.01L12 2z" stroke="#B88B3D" stroke-width="1.8" stroke-linejoin="round"></path>
-          </svg>
-        </div>
-        <div class="award-icon-label">פרס מצטיין ארצי</div>
+      <div class="award-overline">
+        <span class="award-overline-text">הוענקה ע״י קבוצת ידיעות אחרונות</span>
+        <div class="award-overline-line"></div>
       </div>
 
-      <h2 class="award-main-heading">
-        העובד המצטיין בישראל<br>
-        ע״ש נח מוזס
-      </h2>
+      <div class="award-title-block">
+        <div class="award-title-accent" aria-hidden="true"></div>
+        <h2 class="award-h2">
+          <span class="award-shimmer">העובד המצטיין בישראל</span>
+          ע״ש נח מוזס
+        </h2>
+      </div>
+
+      <div class="award-divider-ornament" aria-hidden="true">
+        <span class="award-ornament-star">✦</span>
+        <div class="award-ornament-line"></div>
+        <div class="award-ornament-dot"></div>
+        <div class="award-ornament-line" style="transform: scaleX(-1);"></div>
+        <!-- Icon 2: star ornament -->
+        <span class="award-ornament-star">✦</span>
+      </div>
 
       <p class="award-body-text">
         בשנת 1989 זכיתי בתואר היוקרתי, מטעם קבוצת ידיעות אחרונות, על עבודתי ביקבי רמת הגולן. הזכייה ניתנה במסגרת מבצע ארצי בחסות שר התחבורה, נציבות שירות המדינה והתאחדות התעשיינים. עבורי – הוכחה למחויבות למקצועיות, מצוינות ודיוק בכל שלב בתהליך הייננות.
       </p>
 
-      <div class="award-bottom-credits">
-        <div class="award-credit-item">
-          <div class="award-credit-dot"></div>
-          <div class="award-credit-text">שר התחבורה</div>
+      <div class="award-sponsors-grid">
+        <div class="award-sponsor-chip">
+          <span class="chip-icon" aria-hidden="true">🏛️</span>
+          <span class="chip-text">שר התחבורה</span>
         </div>
-        <div class="award-credit-item">
-          <div class="award-credit-dot"></div>
-          <div class="award-credit-text">נציבות שירות המדינה</div>
+        <div class="award-sponsor-chip">
+          <span class="chip-icon" aria-hidden="true">📋</span>
+          <span class="chip-text">נציבות שירות המדינה</span>
         </div>
-        <div class="award-credit-item">
-          <div class="award-credit-dot"></div>
-          <div class="award-credit-text">התאחדות התעשיינים</div>
+        <div class="award-sponsor-chip">
+          <span class="chip-icon" aria-hidden="true">🤝</span>
+          <span class="chip-text">התאחדות התעשיינים</span>
         </div>
-      </div>
-
-      <div class="award-bottom-stamp">
-        <div class="award-stamp-line"></div>
-        <div class="award-stamp-text">תעודה מקורית • הוקרה לאומית</div>
-        <div class="award-stamp-line" style="background: linear-gradient(to right, transparent, rgba(184,139,61,0.4));"></div>
       </div>
 
     </div>
+  </div>
+</div>
 
+<!-- Bottom info band -->
+<div class="award-bottom-band">
+  <div class="award-bottom-inner">
+    <div class="award-certificate-note">
+      <div class="award-bottom-label">תעודה מקורית</div>
+    </div>
+    <div class="award-bottom-item">
+      <span style="color: var(--accent); font-size:14px;">✦</span>
+      <span>מבצע ארצי — <strong style="color:rgba(214,178,111,0.9);">1989</strong></span>
+    </div>
+    <div class="award-bottom-item">
+      <span style="color: var(--accent); font-size:14px;">✦</span>
+      <span>יקבי רמת הגולן</span>
+    </div>
+    <div class="award-bottom-item">
+      <span style="color: var(--accent); font-size:14px;">✦</span>
+      <span>הוקרה לאומית</span>
+    </div>
   </div>
 </div>
 
