@@ -936,27 +936,29 @@
             })();
           </script>
         
+
+
 <style data-zappy-section-v2-css="true">
 /* V2 Regenerated Section CSS */
 .index-testimonials-section {
   position: relative;
+  overflow: visible;
   background-color: #352D28;
   background-image:
-    radial-gradient(ellipse at 10% 20%, rgba(184, 139, 61, 0.08) 0%, transparent 55%),
-    radial-gradient(ellipse at 90% 80%, rgba(166, 106, 82, 0.10) 0%, transparent 50%),
-    linear-gradient(180deg, #3E3028 0%, #2A231E 100%);
+    radial-gradient(ellipse at 10% 0%, rgba(184,139,61,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(166,106,82,0.10) 0%, transparent 55%),
+    linear-gradient(180deg, #3E3028 0%, #2A2118 100%);
   color: var(--text-light);
-  padding: 80px 0 0;
-  overflow: hidden;
+  padding: 80px 20px 40px;
   direction: rtl;
 }
 
-/* Background pattern */
-.index-testimonials-section .its-bg-pattern {
+/* Background texture */
+.index-testimonials-section .its-bg-texture {
   position: absolute;
   inset: 0;
   background-image: radial-gradient(rgba(184,139,61,0.05) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-size: 18px 18px;
   pointer-events: none;
   z-index: 0;
 }
@@ -965,224 +967,208 @@
 .index-testimonials-section .its-container {
   position: relative;
   z-index: 1;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 32px 80px;
 }
 
-/* ── HEADER ── */
+/* ── Header ── */
 .index-testimonials-section .its-header {
   text-align: center;
-  margin-block-end: 56px;
+  margin-bottom: 56px;
 }
 
 .index-testimonials-section .its-eyebrow {
   display: inline-block;
-  font-family: Manrope, Arial, sans-serif;
+  font-family: 'Manrope', Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-block-end: 14px;
+  margin-bottom: 14px;
 }
 
-.index-testimonials-section .its-main-title {
+.index-testimonials-section .its-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.3;
   color: var(--text-light);
-  margin: 0 0 20px;
+  margin: 0 0 18px 0;
   letter-spacing: -0.01em;
 }
 
 .index-testimonials-section .its-title-ornament {
   display: flex;
   justify-content: center;
-  margin-block-start: 4px;
+  align-items: center;
+  margin-top: 4px;
 }
 
-/* ── TESTIMONIALS GRID ── */
+/* ── Testimonials Grid ── */
 .index-testimonials-section .its-testimonials-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 28px;
-  margin-block-end: 56px;
+  margin-bottom: 52px;
   direction: rtl;
 }
 
-/* ── TESTIMONIAL CARD ── */
-.index-testimonials-section .its-testimonial-card {
-  background: rgba(251, 247, 241, 0.06);
-  border: 1px solid var(--border-dark);
-  border-radius: 4px;
+/* ── Card ── */
+.index-testimonials-section .its-card {
+  position: relative;
+  background: rgba(251,247,241,0.06);
+  border: 1px solid rgba(230,217,204,0.15);
+  border-radius: 6px;
   padding: 36px 32px 28px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-  position: relative;
-  overflow: hidden;
+  gap: 16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
 }
 
-.index-testimonials-section .its-testimonial-card::before {
+.index-testimonials-section .its-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.26);
+}
+
+.index-testimonials-section .its-card--featured {
+  border-color: rgba(184,139,61,0.35);
+  background: rgba(184,139,61,0.07);
+}
+
+.index-testimonials-section .its-card--featured::before {
   content: '';
   position: absolute;
-  inset-inline-end: 0;
   top: 0;
+  inset-inline-start: 0;
   width: 3px;
   height: 100%;
-  background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
-.index-testimonials-section .its-testimonial-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.28);
-  border-color: rgba(184, 139, 61, 0.4);
-}
-
-.index-testimonials-section .its-testimonial-card:hover::before {
-  opacity: 1;
-}
-
-.index-testimonials-section .its-card-featured {
-  background: rgba(184, 139, 61, 0.07);
-  border-color: rgba(184, 139, 61, 0.3);
-}
-
-.index-testimonials-section .its-card-featured::before {
-  opacity: 1;
+  background: linear-gradient(180deg, var(--accent) 0%, rgba(184,139,61,0.2) 100%);
+  border-radius: 6px 0 0 6px;
 }
 
 /* Quote mark */
-.index-testimonials-section .its-quote-mark {
-  display: flex;
-  justify-content: flex-end;
-  margin-block-end: -8px;
-}
-
-/* Quote text */
-.index-testimonials-section .its-quote-text {
-  margin: 0;
-  flex: 1;
-}
-
-.index-testimonials-section .its-quote-text p {
-  font-family: Manrope, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.75;
-  color: var(--text-light);
-  margin: 0;
-  text-align: right;
-  opacity: 0.9;
-}
-
-/* Testimonial footer */
-.index-testimonials-section .its-testimonial-footer {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  border-top: 1px solid var(--border-dark);
-  padding-block-start: 20px;
+.index-testimonials-section .its-card-quote-mark {
+  display: block;
+  margin-bottom: -4px;
 }
 
 /* Stars */
-.index-testimonials-section .its-stars {
+.index-testimonials-section .its-card-stars {
   display: flex;
   flex-direction: row;
-  gap: 3px;
-  justify-content: flex-end;
+  gap: 4px;
 }
 
-.index-testimonials-section .its-stars .fas.fa-star {
+.index-testimonials-section .its-card-stars .fa-star {
   color: var(--accent);
   font-size: 13px;
 }
 
+/* Blockquote text */
+.index-testimonials-section .its-card-text {
+  margin: 0;
+  flex: 1;
+}
+
+.index-testimonials-section .its-card-text p {
+  font-family: 'Manrope', Arial, sans-serif;
+  font-size: 16px !important;
+  line-height: 1.75;
+  color: rgba(248,242,232,0.88);
+  text-align: right;
+  margin: 0;
+  font-style: italic;
+}
+
 /* Author */
-.index-testimonials-section .its-author {
+.index-testimonials-section .its-card-author {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 12px;
-  justify-content: flex-end;
+  padding-top: 16px;
+  border-top: 1px solid rgba(230,217,204,0.12);
+  margin-top: auto;
 }
 
 .index-testimonials-section .its-author-avatar {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-light);
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  color: var(--text-light);
+  font-size: 16px;
 }
 
 .index-testimonials-section .its-author-info {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
   text-align: right;
 }
 
 .index-testimonials-section .its-author-name {
-  font-family: Manrope, Arial, sans-serif;
-  font-size: 14px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 16px;
   font-weight: 700;
   color: var(--text-light);
-  display: block;
 }
 
 .index-testimonials-section .its-author-role {
-  font-family: Manrope, Arial, sans-serif;
+  font-family: 'Manrope', Arial, sans-serif;
   font-size: 12px;
-  color: var(--text-muted);
-  display: block;
+  color: rgba(248,242,232,0.55);
   letter-spacing: 0.03em;
 }
 
-/* ── STATS BAR ── */
+/* ── Stats Bar ── */
 .index-testimonials-section .its-stats-bar {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   gap: 0;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border-dark);
-  border-radius: 4px;
-  padding: 32px 24px;
+  background: rgba(251,247,241,0.05);
+  border: 1px solid rgba(230,217,204,0.14);
+  border-radius: 8px;
+  overflow: hidden;
   direction: rtl;
 }
 
-.index-testimonials-section .its-stat-item {
+.index-testimonials-section .its-stat {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 16px;
+  padding: 32px 36px;
   flex: 1;
-  justify-content: center;
-  padding: 0 24px;
+  min-width: 0;
 }
 
 .index-testimonials-section .its-stat-icon {
-  color: var(--accent);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(184,139,61,0.15);
+  border: 1px solid rgba(184,139,61,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  opacity: 0.85;
+  color: var(--accent);
+  font-size: 18px;
 }
 
 .index-testimonials-section .its-stat-content {
   text-align: right;
+  min-width: 0;
 }
 
 .index-testimonials-section .its-stat-number {
@@ -1191,69 +1177,49 @@
   font-weight: 700;
   line-height: 1.2;
   color: var(--accent);
-  margin: 0 0 4px;
+  margin: 0 0 4px 0;
 }
 
-.index-testimonials-section .its-stat-label {
-  font-family: Manrope, Arial, sans-serif;
-  font-size: 13px;
+.index-testimonials-section .its-stat-content p {
+  font-family: 'Manrope', Arial, sans-serif;
+  font-size: 14px !important;
   line-height: 1.5;
-  color: var(--text-light);
+  color: rgba(248,242,232,0.65);
   margin: 0;
-  opacity: 0.75;
 }
 
-.index-testimonials-section .its-stat-divider {
+.index-testimonials-section .its-stats-divider {
   width: 1px;
-  height: 48px;
-  background: var(--border-dark);
+  background: rgba(230,217,204,0.14);
+  align-self: stretch;
   flex-shrink: 0;
 }
 
-/* ── FOOTER STRIP ── */
-.index-testimonials-section .its-footer-strip {
+/* ── Footer Links ── */
+.index-testimonials-section .its-footer-links {
   position: relative;
   z-index: 1;
-  background: rgba(0,0,0,0.25);
-  border-top: 1px solid var(--border-dark);
-  padding: 20px 32px;
-}
-
-.index-testimonials-section .its-footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
   flex-wrap: wrap;
-  direction: rtl;
-}
-
-.index-testimonials-section .its-footer-copy {
-  font-family: Manrope, Arial, sans-serif;
-  font-size: 12px;
-  color: var(--text-muted);
-  margin: 0;
-  text-align: right;
-}
-
-.index-testimonials-section .its-footer-links {
-  display: flex;
-  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  gap: 6px 12px;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(230,217,204,0.10);
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .index-testimonials-section .its-footer-links a {
-  font-family: Manrope, Arial, sans-serif;
+  font-family: 'Manrope', Arial, sans-serif;
   font-size: 12px;
-  color: var(--text-muted);
+  color: rgba(248,242,232,0.45);
   text-decoration: none;
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .index-testimonials-section .its-footer-links a:hover {
@@ -1261,8 +1227,8 @@
 }
 
 .index-testimonials-section .its-footer-sep {
-  color: var(--border-dark);
   font-size: 12px;
+  color: rgba(248,242,232,0.25);
   user-select: none;
 }
 
@@ -1270,56 +1236,52 @@
 @media (max-width: 900px) {
   .index-testimonials-section .its-stats-bar {
     flex-direction: column;
-    gap: 24px;
-    padding: 28px 20px;
   }
-  .index-testimonials-section .its-stat-divider {
-    width: 60px;
+  .index-testimonials-section .its-stats-divider {
+    width: auto;
     height: 1px;
+    align-self: stretch;
   }
-  .index-testimonials-section .its-stat-item {
-    padding: 0;
-    justify-content: flex-end;
-    width: 100%;
+  .index-testimonials-section .its-stat {
+    padding: 20px 24px;
   }
 }
 
 @media (max-width: 768px) {
   .index-testimonials-section {
-    padding-top: 60px;
-  }
-  .index-testimonials-section .its-container {
-    padding: 0 16px 60px;
-  }
-  .index-testimonials-section .its-main-title {
-    font-size: 1.75rem;
+    padding: 60px 16px 32px;
   }
   .index-testimonials-section .its-testimonials-grid {
     grid-template-columns: 1fr !important;
     gap: 20px;
   }
-  .index-testimonials-section .its-testimonial-card {
+  .index-testimonials-section .its-title {
+    font-size: 1.6rem;
+  }
+  .index-testimonials-section .its-card {
     padding: 24px 20px 20px;
   }
-  .index-testimonials-section .its-header {
-    margin-block-end: 36px;
-  }
-  .index-testimonials-section .its-footer-inner {
-    flex-direction: column;
-    align-items: flex-end;
+  .index-testimonials-section .its-stat {
+    padding: 18px 20px;
     gap: 12px;
   }
+  .index-testimonials-section .its-stat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+  }
   .index-testimonials-section .its-footer-links {
-    justify-content: flex-end;
+    margin-top: 32px;
+    gap: 8px;
   }
-  .index-testimonials-section .its-footer-strip {
-    padding: 16px;
+  .index-testimonials-section .its-header {
+    margin-bottom: 36px;
   }
-  .index-testimonials-section .its-stat-item {
-    justify-content: center;
-  }
-  .index-testimonials-section .its-stat-content {
-    text-align: center;
+}
+
+@media (min-width: 769px) {
+  .index-testimonials-section .its-title {
+    font-size: 2rem;
   }
 }
 </style>
@@ -1363,16 +1325,16 @@
 
   <nav class="navbar" dir="rtl">
   <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
-    <svg class="hamburger-icon" width="24" height="24" viewbox="0 0 24 24" fill="none">
+    <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
     </svg>
-    <svg class="close-icon" width="24" height="24" viewbox="0 0 24 24" fill="none" style="display: none;">
+    <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
       <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
     </svg>
   </button>
 
   <button class="phone-header-btn" data-phone="0777297071" aria-label="Call">
-    <svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
     </svg>
   </button>
@@ -1849,7 +1811,7 @@
 
       <!-- Divider ornament -->
       <div class="index-hero-ornament" aria-hidden="true">
-        <svg aria-hidden="true" width="120" height="14" viewbox="0 0 120 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg aria-hidden="true" width="120" height="14" viewBox="0 0 120 14" fill="none" xmlns="http://www.w3.org/2000/svg">
           <line x1="0" y1="7" x2="44" y2="7" stroke="rgba(184,139,61,0.55)" stroke-width="1"></line>
           <circle cx="60" cy="7" r="4" stroke="rgba(184,139,61,0.75)" stroke-width="1.2" fill="none"></circle>
           <circle cx="60" cy="7" r="1.5" fill="rgba(184,139,61,0.75)"></circle>
@@ -1868,7 +1830,7 @@
 
   <!-- Bottom SVG Divider -->
   <div class="index-hero-divider-wrapper">
-    <svg aria-hidden="true" viewbox="0 0 1440 72" preserveaspectratio="none" xmlns="http://www.w3.org/2000/svg">
+    <svg aria-hidden="true" viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,72 L0,38 Q120,28 240,36 T480,30 Q600,24 720,34 T960,28 Q1080,22 1200,32 T1440,26 L1440,72 Z" fill="#FAF5EE"></path>
     </svg>
   </div>
@@ -1912,7 +1874,7 @@
   <!-- Bottom Divider: asymmetric curve + brass rule -->
   <div class="index-story-divider-wrapper">
     <div class="index-story-brass-rule"></div>
-    <svg aria-hidden="true" viewbox="0 0 1440 72" preserveaspectratio="none" xmlns="http://www.w3.org/2000/svg">
+    <svg aria-hidden="true" viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,72 L0,36 Q180,18 360,28 T720,22 Q960,16 1080,30 T1440,20 L1440,72 Z" fill="#F6F0E8"></path>
     </svg>
   </div>
@@ -1940,7 +1902,7 @@
     <!-- Three-Card Grid -->
     <div class="index-services-grid zappy-preserve-css-grid" style="display: grid; grid-template-columns: 484.172px 333.906px 333.906px;" id="zappy-auto-grid-1773928404749-jnrcot" data-zappy-auto-grid="true" data-zappy-grid-align="start" data-original-item-width="484" data-original-gap="24px"><article class="index-services-card index-services-card--featured">
         <div class="index-services-card-icon">
-          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M24 4 C14 4 8 12 8 20 C8 30 16 36 24 44 C32 36 40 30 40 20 C40 12 34 4 24 4Z"></path>
             <circle cx="24" cy="20" r="5"></circle>
             <line x1="24" y1="25" x2="24" y2="34"></line>
@@ -1955,7 +1917,7 @@
         </div>
       </article><article class="index-services-card">
         <div class="index-services-card-icon">
-          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="6" y="18" width="36" height="26" rx="2"></rect>
             <path d="M6 18 L24 6 L42 18"></path>
             <line x1="18" y1="44" x2="18" y2="30"></line>
@@ -1975,7 +1937,7 @@
         </div>
       </article><article class="index-services-card">
         <div class="index-services-card-icon">
-          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="6" y="8" width="36" height="26" rx="2"></rect>
             <line x1="14" y1="42" x2="34" y2="42"></line>
             <line x1="24" y1="34" x2="24" y2="42"></line>
@@ -2000,7 +1962,7 @@
 
   <!-- Bottom Divider: Vineyard Contour Lines -->
   <div class="index-services-divider-wrapper" aria-hidden="true">
-    <svg aria-hidden="true" viewbox="0 0 1200 90" preserveaspectratio="none" xmlns="http://www.w3.org/2000/svg">
+    <svg aria-hidden="true" viewBox="0 0 1200 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <!-- Contour lines fading into dark -->
       <path d="M0,90 L0,55 Q60,52 120,57 T240,53 Q300,56 360,51 T480,55 Q540,52 600,57 T720,53 Q780,56 840,51 T960,55 Q1020,52 1080,57 T1200,53 L1200,90 Z" fill="var(--bg-light)" opacity="1"></path>
       <path d="M0,90 L0,65 Q80,61 160,67 T320,62 Q400,66 480,61 T640,65 Q720,61 800,67 T960,62 Q1040,66 1120,61 T1200,65 L1200,90 Z" fill="var(--bg-light)" opacity="0.85"></path>
@@ -2673,139 +2635,129 @@
 
 
 
-<section class="index-testimonials-section" dir="rtl" data-layout-spec="בית-testimonials" data-zappy-section="true" id="zappy-section-3">
+<section class="index-testimonials-section" data-layout-spec="בית-testimonials" dir="rtl" data-zappy-section="true" id="zappy-section-3">
+  <!-- Background texture overlay -->
+  <div class="its-bg-texture" aria-hidden="true"></div>
 
-  <!-- Background pattern overlay -->
-  <div class="its-bg-pattern" aria-hidden="true"></div>
-
-  <!-- Section Header -->
+  <!-- Section header -->
   <div class="its-container">
     <div class="its-header">
       <span class="its-eyebrow">קולות מהשטח</span>
-      <h2 class="its-main-title">מה אומרים עלינו</h2>
+      <h2 class="its-title">מה אומרים עלינו</h2>
       <div class="its-title-ornament" aria-hidden="true">
-        <svg data-no-icon-edit="true" aria-hidden="true" width="120" height="12" viewbox="0 0 120 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="6" x2="45" y2="6" stroke="var(--border-light)" stroke-width="1"></line>
-          <circle cx="60" cy="6" r="4" fill="var(--accent)"></circle>
-          <circle cx="48" cy="6" r="2" fill="var(--secondary)" opacity="0.5"></circle>
-          <circle cx="72" cy="6" r="2" fill="var(--secondary)" opacity="0.5"></circle>
-          <line x1="75" y1="6" x2="120" y2="6" stroke="var(--border-light)" stroke-width="1"></line>
+        <svg data-no-icon-edit="true" aria-hidden="true" width="120" height="12" viewBox="0 0 120 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="6" x2="48" y2="6" stroke="#B88B3D" stroke-width="1" opacity="0.5"></line>
+          <circle cx="60" cy="6" r="4" fill="#B88B3D" opacity="0.7"></circle>
+          <line x1="72" y1="6" x2="120" y2="6" stroke="#B88B3D" stroke-width="1" opacity="0.5"></line>
         </svg>
       </div>
     </div>
 
-    <!-- Testimonials Grid -->
+    <!-- Testimonials grid -->
     <div class="its-testimonials-grid">
 
       <!-- Testimonial 1 -->
-      <article class="its-testimonial-card its-card-featured">
-        <div class="its-quote-mark" aria-hidden="true">
-          <svg data-element-type="icon" data-icon-type="svg" width="40" height="32" viewbox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 32V19.2C0 14.4 1.2 10.4 3.6 7.2C6 4 9.6 1.6 14.4 0L16.8 4C13.6 5.2 11.2 6.8 9.6 8.8C8 10.8 7.2 13.2 7.2 16H14.4V32H0ZM22.4 32V19.2C22.4 14.4 23.6 10.4 26 7.2C28.4 4 32 1.6 36.8 0L39.2 4C36 5.2 33.6 6.8 32 8.8C30.4 10.8 29.6 13.2 29.6 16H36.8V32H22.4Z" fill="var(--accent)" opacity="0.25"></path>
+      <article class="its-card its-card--featured">
+        <div class="its-card-quote-mark" aria-hidden="true">
+          <svg data-no-icon-edit="true" aria-hidden="true" width="36" height="28" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 28V16.8C0 7.467 5.6 1.867 16.8 0L18.2 2.8C13.067 4.133 10.267 7.2 9.8 12H16.8V28H0ZM19.2 28V16.8C19.2 7.467 24.8 1.867 36 0L37.4 2.8C32.267 4.133 29.467 7.2 29 12H36V28H19.2Z" fill="#B88B3D" opacity="0.18"></path>
           </svg>
         </div>
-        <blockquote class="its-quote-text">
+        <div class="its-card-stars" aria-label="דירוג 5 כוכבים">
+          <i class="fas fa-star" aria-hidden="true"></i>
+          <i class="fas fa-star" aria-hidden="true"></i>
+          <i class="fas fa-star" aria-hidden="true"></i>
+          <i class="fas fa-star" aria-hidden="true"></i>
+          <i class="fas fa-star" aria-hidden="true"></i>
+        </div>
+        <blockquote class="its-card-text">
           <p>דוד מלווה את היקב שלנו כבר שלו בציר, ובכל שנה אנחנו רואים שיפור מדיד ואמיתי בטיב היין. הוא יודע לשמור על האופי הייחודי שלנו ולא לכפות עליו שפה זרה. זה נדיר - יינן מלווה ליקב בוטיק שמקשיב לפני שהוא מדבר, ומכבד את החזון של הייננים שהוא עובד איתם.</p>
         </blockquote>
-        <footer class="its-testimonial-footer">
-          <div class="its-stars" aria-label="דירוג 5 כוכבים">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <footer class="its-card-author">
+          <div class="its-author-avatar">
+            <i class="fas fa-user" aria-hidden="true"></i>
           </div>
-          <div class="its-author">
-            <div class="its-author-avatar">
-              <span>י</span>
-            </div>
-            <div class="its-author-info">
-              <strong class="its-author-name">יקב בוטיק מהגליל</strong>
-              <span class="its-author-role">בעלים ויינן ראשי</span>
-            </div>
+          <div class="its-author-info">
+            <strong class="its-author-name">יקב בוטיק</strong>
+            <span class="its-author-role">בעלים ויינן ראשי</span>
           </div>
         </footer>
       </article>
 
       <!-- Testimonial 2 -->
-      <article class="its-testimonial-card">
-        <div class="its-quote-mark" aria-hidden="true">
-          <svg data-element-type="icon" data-icon-type="svg" width="40" height="32" viewbox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 32V19.2C0 14.4 1.2 10.4 3.6 7.2C6 4 9.6 1.6 14.4 0L16.8 4C13.6 5.2 11.2 6.8 9.6 8.8C8 10.8 7.2 13.2 7.2 16H14.4V32H0ZM22.4 32V19.2C22.4 14.4 23.6 10.4 26 7.2C28.4 4 32 1.6 36.8 0L39.2 4C36 5.2 33.6 6.8 32 8.8C30.4 10.8 29.6 13.2 29.6 16H36.8V32H22.4Z" fill="var(--accent)" opacity="0.25"></path>
+      <article class="its-card">
+        <div class="its-card-quote-mark" aria-hidden="true">
+          <svg data-no-icon-edit="true" aria-hidden="true" width="36" height="28" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 28V16.8C0 7.467 5.6 1.867 16.8 0L18.2 2.8C13.067 4.133 10.267 7.2 9.8 12H16.8V28H0ZM19.2 28V16.8C19.2 7.467 24.8 1.867 36 0L37.4 2.8C32.267 4.133 29.467 7.2 29 12H36V28H19.2Z" fill="#B88B3D" opacity="0.18"></path>
           </svg>
         </div>
-        <blockquote class="its-quote-text">
+        <div class="its-card-stars" aria-label="דירוג 5 כוכבים">
+          <i class="fas fa-star" aria-hidden="true"></i>
+          <i class="fas fa-star" aria-hidden="true"></i>
+          <i class="fas fa-star" aria-hidden="true"></i>
+          <i class="fas fa-star" aria-hidden="true"></i>
+          <i class="fas fa-star" aria-hidden="true"></i>
+        </div>
+        <blockquote class="its-card-text">
           <p>קיבלנו ייעוץ מקצועי לייננים שלנו בשלב קריטי של הרחבת היקב. הידע שדוד הביא – שנים של עבודה עם יקבים מובילים בארץ ובחו"ל – הוציא אותנו מתוך ספקות ונתן לנו ביטחון לפעול. הדיסקרטיות, הדיוק, וההתמסרות לפרטים הקטנים – אלה הדברים שמייחדים אותו מכל יועץ אחר שפגשנו.</p>
         </blockquote>
-        <footer class="its-testimonial-footer">
-          <div class="its-stars" aria-label="דירוג 5 כוכבים">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <footer class="its-card-author">
+          <div class="its-author-avatar">
+            <i class="fas fa-user" aria-hidden="true"></i>
           </div>
-          <div class="its-author">
-            <div class="its-author-avatar">
-              <span>מ</span>
-            </div>
-            <div class="its-author-info">
-              <strong class="its-author-name">יקב מבוסס מהשפלה</strong>
-              <span class="its-author-role">מנכ"ל ומייסד</span>
-            </div>
+          <div class="its-author-info">
+            <strong class="its-author-name">יקב מבוסס</strong>
+            <span class="its-author-role">מנכ"ל ומייסד</span>
           </div>
         </footer>
       </article>
 
-    </div>
+    </div><!-- /.its-testimonials-grid -->
 
-    <!-- Stats Bar -->
+    <!-- Stats bar -->
     <div class="its-stats-bar">
-      <div class="its-stat-item">
+      <div class="its-stat">
         <div class="its-stat-icon" aria-hidden="true">
-          <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewbox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14 2C7.373 2 2 7.373 2 14s5.373 12 12 12 12-5.373 12-12S20.627 2 14 2zm0 2c5.523 0 10 4.477 10 10S19.523 24 14 24 4 19.523 4 14 8.477 4 14 4zm-1 4v7.414l4.293 4.293 1.414-1.414L15 14.586V8h-2z" fill="currentColor"></path>
-          </svg>
+          <i class="fas fa-award"></i>
         </div>
         <div class="its-stat-content">
           <h3 class="its-stat-number">30+</h3>
           <p class="its-stat-label">שנות ניסיון בייננות מקצועית</p>
         </div>
       </div>
-      <div class="its-stat-divider" aria-hidden="true"></div>
-      <div class="its-stat-item">
+      <div class="its-stats-divider" aria-hidden="true"></div>
+      <div class="its-stat">
         <div class="its-stat-icon" aria-hidden="true">
-          <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewbox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 6h20v2H4V6zm2 4h16v2H6v-2zm-2 4h20v2H4v-2zm2 4h16v2H6v-2zm-2 4h20v2H4v-2z" fill="currentColor"></path>
-          </svg>
+          <i class="fas fa-wine-bottle"></i>
         </div>
         <div class="its-stat-content">
           <h3 class="its-stat-number">יקבי עילית</h3>
           <p class="its-stat-label">דלתון, רמת הגולן ופרויקטים בצרפת</p>
         </div>
       </div>
-      <div class="its-stat-divider" aria-hidden="true"></div>
-      <div class="its-stat-item">
+      <div class="its-stats-divider" aria-hidden="true"></div>
+      <div class="its-stat">
         <div class="its-stat-icon" aria-hidden="true">
-          <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewbox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14 2l3.09 6.26L24 9.27l-5 4.87 1.18 6.88L14 17.77l-6.18 3.25L9 14.14 4 9.27l6.91-1.01L14 2z" fill="currentColor"></path>
-          </svg>
+          <i class="fas fa-graduation-cap"></i>
         </div>
         <div class="its-stat-content">
           <h3 class="its-stat-number">קורסים דיגיטליים</h3>
           <p class="its-stat-label">הכשרת דור הבא של ייננות ישראל</p>
         </div>
       </div>
-    </div>
+    </div><!-- /.its-stats-bar -->
 
-  </div>
+  </div><!-- /.its-container -->
 
-  <!-- Footer Strip -->
-  <div class="its-footer-strip">
-    <div class="its-footer-inner">
-      
-      <nav class="its-footer-links" aria-label="קישורי תחתית">
-        <a href="/privacy">מדיניות פרטיות</a>
-        <span class="its-footer-sep" aria-hidden="true">·</span>
-        <a href="/terms">תנאי שימוש</a>
-        <span class="its-footer-sep" aria-hidden="true">·</span>
-        <a href="/accessibility">נגישות</a>
-        <span class="its-footer-sep" aria-hidden="true">·</span>
-        <a href="https://zappy5.com" target="_blank" rel="noopener noreferrer">נוצר באמצעות זוהר דיגיטל</a>
-      </nav>
-    </div>
+  <!-- Footer links -->
+  <div class="its-footer-links">
+    <a href="/privacy">מדיניות פרטיות</a>
+    <span class="its-footer-sep" aria-hidden="true">·</span>
+    <a href="/terms">תנאי שימוש</a>
+    <span class="its-footer-sep" aria-hidden="true">·</span>
+    <a href="/accessibility">נגישות</a>
+    <span class="its-footer-sep" aria-hidden="true">·</span>
+    <a href="https://zappy5.com" target="_blank" rel="noopener noreferrer">נוצר באמצעות זוהר דיגיטל</a>
   </div>
 
 </section>
